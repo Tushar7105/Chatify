@@ -1,9 +1,9 @@
 import express from "express";
 import path from "path";
 import authRoutes from "./routes/auth.routes.js";
-import dotenv from "dotenv";
 import { connectToDB } from "./lib/db.js";
-dotenv.config();
+import { ENV } from "./lib/env.js";
+
 
 const app = express();
 const __dirname = path.resolve();
@@ -12,7 +12,7 @@ app.use("/api/auth", authRoutes);
 
 
 
-if(process.env.NODE_ENV === "production"){
+if(ENV.NODE_ENV === "production"){
     app.use(express.static(path.join(__dirname, "../frontend", "dist")));
     const indexFile = path.join(__dirname, "../frontend", "dist", "index.html");
     app.get("*", (req, res) => {
@@ -20,9 +20,9 @@ if(process.env.NODE_ENV === "production"){
     });
 }
 
-app.listen(process.env.PORT || 3000, ()=>{
+app.listen(ENV.PORT, ()=>{
     connectToDB();
-    console.log("server is running on port: " + process.env.PORT);
+    console.log("server is running on port: " + ENV.PORT);
 });
 
 
