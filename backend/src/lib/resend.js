@@ -1,7 +1,7 @@
-import resend from "resend";
+import { Resend } from 'resend';
 import { ENV } from "./env.js";
 
-const resendCliend = new resend(ENV.RESEND_API_KEY);
+const resendCliend = new Resend(ENV.RESEND_API_KEY);
 
 export const sender = {
     email : ENV.EMAIL_FROM,

@@ -1,12 +1,17 @@
-import { sender } from "../lib/resend.js";
+import {Resend} from 'resend';
 import { createWelcomeEmailTemplate } from "./emailTemplates.js";
+import { ENV } from '../lib/env.js';
+
+const resend = new Resend(ENV.RESEND_API_KEY);
+// const from = `${ENV.EMAIL_FROM} <${ENV.EMAIL_FROM_NAME}>`;
+const from = "Chatify <onboarding@resend.dev>";
 
 export const sendWelcomeEmail = async (email, name, clientURL) => {
  const {data, error} = await resend.emails.send({
-    from : `${sender.name} <${sender.email}>`,
+    from ,
     to : email, 
     subject : "Welcome to Chatify",
-    react : createWelcomeEmailTemplate(name, clientURL)
+    html : createWelcomeEmailTemplate(name, clientURL)
  });
 
  if(error){
