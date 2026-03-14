@@ -3,11 +3,13 @@ import path from "path";
 import authRoutes from "./routes/auth.routes.js";
 import { connectToDB } from "./lib/db.js";
 import { ENV } from "./lib/env.js";
+import cookieParser from "cookie-parser";
 
 
 const app = express();
 const __dirname = path.resolve();
 app.use(express.json());
+app.use(cookieParser())
 app.use("/api/auth", authRoutes);
 
 
