@@ -11,6 +11,6 @@ router.get("/contacts", getContacts);
 
 router.get("/messages/:id", getMessagesByUserId);
 
-// router.post("/send/:id", sendMessage);
+router.post("/send/:id", sendMessage);
 
 export default router;
