@@ -1,5 +1,5 @@
 import express from "express";
-import { getContacts, getMessagesByUserId } from "../controllers/message.controller";
+import { getChatPartners, getContacts, getMessagesByUserId, sendMessage } from "../controllers/message.controller";
 import { protectRoute } from "../middlewares/auth.middleware";
 
 const router = express.Router();
@@ -7,7 +7,7 @@ router.use(protectRoute);
 
 router.get("/contacts", getContacts);
 
-// router.get("/chats", getChatPartners);
+router.get("/chats", getChatPartners);
 
 router.get("/messages/:id", getMessagesByUserId);
 
