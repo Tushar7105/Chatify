@@ -7,7 +7,7 @@ export const getContacts = async (req, res) => {
         const filteredUsers = await User.find({_id : {$ne : loggedInUserId}}).select("-password");
         return res.status(200).json(filteredUsers);
     }catch(error){
-        console.log(error);
+        console.log("error in getContacts controller", error.message);
         return res.status(500).json({message : "Internal server error"});
     }
 }
@@ -27,7 +27,7 @@ export const getMessagesByUserId = async (req, res)=>{
         res.status(200).json(messages);
         
     }catch(error){
-        console.log("error in getMessagesByUserId", error.message);
+        console.log("error in getMessagesByUserId controller", error.message);
         return res.status(500).json({message : "Internal server error"});
     }
 }
