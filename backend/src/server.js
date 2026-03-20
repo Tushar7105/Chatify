@@ -4,13 +4,15 @@ import authRoutes from "./routes/auth.routes.js";
 import messgaeRoutes from "./routes/message.route.js";
 import { connectToDB } from "./lib/db.js";
 import { ENV } from "./lib/env.js";
+import cors from "cors";
 import cookieParser from "cookie-parser";
 
 
 const app = express();
 const __dirname = path.resolve();
 app.use(express.json());
-app.use(cookieParser())
+app.use(cors({origin : ENV.CLIENT_URL, credentials : true}))
+app.use(cookieParser());
 app.use("/api/auth", authRoutes);
 app.use("/api/message", messgaeRoutes);
 
