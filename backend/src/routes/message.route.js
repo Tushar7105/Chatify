@@ -10,7 +10,7 @@ router.get("/contacts", getContacts);
 
 router.get("/chats", getChatPartners);
 
-router.get("/messages/:id", getMessagesByUserId);
+router.get("/:id", getMessagesByUserId);
 
 router.post("/send/:id", sendMessage);
 

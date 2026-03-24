@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(cors({origin : ENV.CLIENT_URL, credentials : true}))
 app.use(cookieParser());
 app.use("/api/auth", authRoutes);
-app.use("/api/message", messgaeRoutes);
+app.use("/api/messages", messgaeRoutes);
 
 
 if(ENV.NODE_ENV === "production"){
